@@ -1,657 +1,1659 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ny Aro -VIP-</title>
-    <link rel="shortcut icon" href="img/vip 2.png">
-    <style>
-        /* Importation de la police */
- @font-face {
-    font-family: 'AA';
-    src: url('fonts/AA.ttf') format('truetype'),
-         url('fonts/AA.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Signature';
-    src: url('fonts/Signature.woff2') format('woff2'),
-         url('fonts/Signature.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Melissa';
-    src: url('fonts/Melissa.ttf') format('truetype'),
-         url('fonts/Melissa.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-/* Styles généraux */
-body {
-    background: url(./img/fond\ accueil.png);
-    height: 650px;
-    font-family: 'Melissa', sans-serif;
-    margin: 0;
-    font-size: small;
-}
-
-.header {
-    background: url(./img/entete2\ .png);
-    padding-top: 25px;
-    padding-bottom: 15px;
-    display: flex;
-    width: 100%;
-    height: 160px;
-    position: fixed;
-    z-index: 1000;
-}
-
-.hg {
-    margin-left: 50px;
-}
-@keyframes float {
-    0% {
-      transform: translateY(-25%);
-      opacity: 1;
-    }
-    50% {
-      transform: translateY(5px); /* Ajuste la distance de la descente */
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(-25%);
-      opacity: 1;
-    }
-  }
-  
-.hg img{
-    animation: float 3s ease-in-out infinite;
-}
-
-.hg h1 {
-    color: #FFd700;
-    margin-top: -15px;
-    margin-left: 10px;
-    font-family: 'Signature';
-    padding-left: 15px;
-    box-shadow: 0 0 10px #a08800;
-}
-
-.hd {
-    margin-left: auto;
-    margin-right: 50px;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-li {
-    display: inline-block;
-    margin-top: 5px;
-    padding: 10px 15px;
-    border-radius: 20px;
-    font-size: 35px;
+    <title data-i18n="page_title">Ny Aro-Portfolio</title>
+    <link rel="shortcut icon" href="img/FINAL LOGO.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
-    margin-right: 25px;
-}
+    <style>
+        /* Définition des variables de couleurs */
+        :root {
+            --primary-color: #C9A24D; /* La couleur Gold/Premium */
+            --text-color: #ffffff;
+            --background-color: #000000;
+            --secondary-text-color: #aaaaaa;
+            --hero-content-width: 45%; 
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* Fix pour toutes les langues, y compris l'arabe */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            color: var(--text-color);
+            background-color: var(--background-color);
+            /* **MODIFIÉ:** Par défaut pour le Desktop/Tablette (Défilement Horizontal) */
+            overflow: hidden; 
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        /* --- En-tête (Header) --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* Changement de padding pour s'assurer que le contenu commence au bon endroit */
+            padding: 25px 5%; 
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+        }
+        
+        /* FIX: Assurer que le conteneur du bouton est positionné par le header */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            /* Le bouton est déjà dans le flux normal ici */
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-left: 0; 
+        }
+
+        .logo-z {
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin-left: -150px;
+            margin-right: 500px;
+            
+        }
+
+        nav ul li {
+            margin-left: 35px;
+        }
+
+        nav ul li a {
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+            transition: color 0.3s, border-bottom 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+            opacity: 1;
+        }
+        
+        nav ul li a.active { 
+            color: var(--primary-color);
+            opacity: 1;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 3px;
+        }
+        
+        /* --- STYLES AMÉLIORÉS DU BOUTON PARAMÈTRE (HAMBURGER) --- */
+        /* FIX: Positionner le bouton Paramètre à l'extrême droite */
+        .hamburger-menu {
+            /* Retiré du flux normal pour se positionner en haut à droite de la fenêtre */
+            position: fixed; 
+            top: 25px; /* Maintient le même padding vertical que le header */
+            right: 5%; /* Maintient le même padding horizontal que le header */
+            
+            font-size: 22px; 
+            cursor: pointer;
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px; 
+            height: 50px;
+            border-radius: 50%;
+            
+            background-color: transparent; 
+            border: 2px solid var(--primary-color); 
+            color: var(--primary-color); 
+            box-shadow: 0 0 5px rgba(201, 162, 77, 0.3); 
+            
+            transition: all 0.3s ease-in-out, box-shadow 0.4s;
+            z-index: 101; /* Doit être au-dessus de tout, même du menu de langue fermé */
+        }
+
+        .hamburger-menu:hover {
+            background-color: var(--primary-color);
+            color: var(--background-color); 
+            box-shadow: 0 0 20px rgba(201, 162, 77, 1); 
+            transform: scale(1.05);
+        }
+        /* Cacher les icônes sociales du header */
+        .header-actions .social-icons {
+            display: none;
+        }
+
+        /* --- Conteneur du site pour le défilement horizontal (Desktop/Tablet) --- */
+        .wrapper {
+            display: flex;
+            width: 400%; /* 4 sections */
+            height: 100vh;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Style pour chaque section pleine page */
+        .page-section {
+            width: 25%;
+            height: 100%;
+            position: relative;
+            flex-shrink: 0;
+            display: flex; 
+            align-items: center;
+            /* Le padding horizontal est géré par les éléments internes sauf pour #about */
+            padding-left: 5%; 
+        }
+
+        /* Conteneur d'image pour le diaporama (Home) */
+        .image-slider,
+        .contact-image-container { /* Styles unifiés pour Home et Contact Image */
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 55%; 
+            height: 100%;
+            overflow: hidden;
+            border-radius: 0; 
+            box-shadow: none; 
+        }
+        
+        .contact-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7; /* Match l'opacité de l'image Home */
+        }
 
 
-.current a {
-    text-decoration: none;
-    color: rgb(255, 255, 255);
-    background-color: rgba(162, 0, 0, 0.411);
-    font-family: 'Melissa';
-    border-radius: 50%;
-    padding: 15px;
-    box-shadow:  0 0 50px #a08800;
-}
+        #background-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7; 
+            transition: opacity 1s ease-in-out;
+        }
 
-.tsisy {
-    background-color: rgba(51, 0, 255, 0); 
-    color: aliceblue;
-    border-radius: 50px; 
-}
-.tsisy a:hover {
-    background-color: #FFd700;
-    color: rgb(76, 0, 0);
-    box-shadow: 2px 5px 2px #a08800;
-}
-
-.tsisy a {
-    color: aliceblue;
-    text-decoration: none;
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-
-/* break*/ 
-.break {
-    height: 578px;
-}
+        /* Contenu du texte (Home) */
+        .hero-content, 
+        .placeholder-content.contact-content-left { 
+            position: relative;
+            margin-left: -200px;
+            z-index: 5;
+            width: var(--hero-content-width); 
+            padding: 100px 0;
+        }
+        
+        /* FIX: Le contenu "contact" n'a plus besoin d'un margin-left négatif */
+        .placeholder-content.contact-content-left {
+             position: relative;
+             z-index: 5;
+             width: var(--hero-content-width); 
+             padding: 100px 0;
+             margin-left: 0; 
+        }
 
 
-/* main*/
-.main {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 280px; /****************************************************************/
-    background: url(./img/);
-    text-align: center;
-    font-family: 'Melissa';
-}
+        /* --- Nouvelle Section About (2e Page) --- */
+        #about.page-section {
+            /* Style restauré */
+            display: block; 
+            padding: 100px 5%; /* Maintient un padding général pour la section */
+            /* CORRIGÉ: Empêche toute barre de défilement pour le about */
+            overflow: hidden; 
+        }
 
-.main h2 {
-    color: azure;
-}
-.main img{
-  margin-top: -450px;
-  margin-left: 1170px;
-}
-.bienvenu{
-  background-color: #fffcd5;
-  padding: 15px;
-  border-radius: 17px;
-  margin-left: 200px;
-  margin-right: 180px;
-  margin-top: -30px;
-  border: solid 5px;
-  border-color: #FFd700;
-  box-shadow: 0 0 15px red;
-}
-.bienvenu h2{
-  font-size: 30px;
-  color: #292524;
-}
-.bienvenu p{
-  color: #292524;
-  font-size: 15px;
-  text-align: center;
-}
+        .about-content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* MODIFIÉ: Image du milieu RETIRÉE */
+            gap: 40px;
+            max-width: 1200px;
+            /* FIX: Centrer le contenu après suppression du h2 */
+            margin: 50px auto 0 auto; 
+        }
 
+        .about-text-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; 
+            gap: 5px;
+        }
+        
+        /* FIX: Suppression des marges pour aligner le texte directement à gauche/droite de sa colonne */
+        .about-text-column.left .about-block {
+            text-align: left;
+            /* L'alignement est suffisant, pas besoin de marge spécifique */
+        }
 
-/*bouto*/
-#con1 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-  border: none;
-  outline: none;
-  color: rgb(60, 3, 3);
-  text-transform: uppercase;
-  font-weight: 700;
-  font-size: .75rem;
-  padding: 0.75rem 1.5rem;
-  background-color: rgb(255, 244, 208);
-  border-radius: 0.5rem;
-  width: 90%;
-  text-shadow: 0px 4px 18px #2c3442;
-}
-#con1:hover{
-  background-color: rgb(255, 222, 114);
-  color: rgb(60, 3, 3);
-}
+        .about-text-column.right .about-block {
+            text-align: right;
+            /* L'alignement est suffisant, pas besoin de marge spécifique */
+        }
 
-.m1{
-display: flex;
-margin-left: 5px;
-margin-top: -260px;
-margin-bottom: 150px;
-}
-.f2{
-  margin-left: 75px;
-}
-.cca{
-    margin-left: 35px;
-}
+        .about-block h3 {
+            font-size: 22px;
+            color: var(--primary-color);
+            
+            font-weight: 600;
+        }
 
-/* btmm*/
-.footer{
-  margin-top: 1px;
-}
+        .about-block p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--secondary-text-color);
+            /* MODIFIÉ: Justify paragraphs as requested */
+            text-align: justify; 
+        }
 
-.btmm{
-  display: flex;
-  margin-top: 33px;
-  background: url(img/bigfoot3.png);
-  margin-bottom: -50px;
-  padding: 25px;
-  padding-top: 45px;
-  padding-bottom: 45px;
-}
+        /* --- FIN NOUVELLE SECTION ABOUT --- */
 
+        .greeting {
+            font-size: 18px;
+            color: var(--primary-color); 
+            font-weight: 500;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
 
-.alr{
-  color: rgb(0, 0, 0);
-  font-size: 19px;
-  background: linear-gradient(315deg,#d07d00,#fff985);
-  margin-top: 50px;
-  padding: 3px;
-  text-align: center;
-}
-.alr2{
-  color: rgb(0, 0, 0);
-  font-size: 10px;
-  background: linear-gradient(315deg,#FFd700,#fff985);
-  margin-top: 180px;
-  margin-bottom: -35px;
-  padding: 0;
-}
+        .hero-content h1 {
+            font-size: 60px;
+            margin-bottom: 5px; /* Garder le H1 près du H2 */
+            font-weight: 800;
+        }
 
-.btm1{
-  margin-left: 250px;
-  color: white;
-  border-left: dashed 1px;
-  border-right: dashed 1px;
-  border-color: #ffef3e;
-  padding-left: 75px;
-  padding-right: 75px;
-  
-}
-.btm1 h2{
-  font-size: 30px;
-}
-.btm1 p{
-  font-size: 30px;
-  font-size: 17px;
-}
-.btm2{
-  margin-left: 150px;
-  padding: 0;
-}
-.btm2 h2{
-  font-size: 30px;
-  text-align: center;
-  color: white;
-}
-.kozii{
-  color: white;
-  font-size: 17px;
-  margin-top: 50px;
-  text-align: center;
-  margin-left: 7px;
-  margin-right: 7px;
-}
-/* Fb, twitter insta footer*/ 
-.card {
-  position: relative;
-  width: 190px;
-  height: 254px;
-  background: #f00;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+        /* CORRIGÉ: Style général pour les H2 de la Home */
+        .hero-content h2 {
+            font-size: 26px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
 
-}
+        /* CORRIGÉ: Style pour OLINJANAHARY (le nom) - Blanc et serré (mais avec un peu d'espace) */
+        .hero-content h2.name-only {
+            color: var(--text-color); 
+            margin-top: -10px; /* Moins négatif que -15px pour un petit espace entre H1 et H2 */
+            margin-bottom: 5px; 
+            font-size: 35px;
+        }
+        
+        /* CORRIGÉ: Style pour le titre (MARKETING & FINANCIAL OFFICER) - Gold et espacé avant le bio */
+        .hero-content h2:not(.name-only) {
+            color: var(--primary-color);
+            margin-bottom: 25px;
+        }
 
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(315deg,#FFd700,#fffde4);
-}
+        .bio {
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--secondary-text-color);
+            max-width: 500px;
+            margin-bottom: 35px;
+        }
 
-.card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(315deg,#FFd700,#fff985);
-  filter: blur(10px);
-}
+        /* Boutons d'appel à l'action */
+        .cta-buttons a {
+            padding: 14px 35px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 14px;
+            border-radius: 50px;
+            transition: all 0.3s;
+            margin-right: 0; /* Un seul bouton */
+            display: inline-block;
+            letter-spacing: 1px;
+        }
 
-.card b {
-  position: absolute;
-  inset: 6px;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 2;
-}
+        .primary-btn {
+            background-color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            color: var(--background-color);
+        }
 
-.card img {
-margin-bottom: -338px;
-  z-index: -3;
-  scale: 0.8;
-  opacity: 0.25;
-  transition: 0.5s;
-  height: 350px;
-    width: 350px;
-}
+        .primary-btn:hover {
+            background-color: #a8853e;
+            border-color: #a8853e;
+            box-shadow: 0 0 15px rgba(201, 162, 77, 0.6); 
+        }
 
-.card:hover img {
-  scale: 0.5;
-  opacity: 0.9;
-  transform: translateY(-70px);
+        .secondary-btn {
+            background-color: transparent;
+            border: 2px solid var(--text-color);
+            color: var(--text-color);
+        }
 
-}
+        .secondary-btn:hover {
+            background-color: var(--text-color);
+            color: var(--background-color);
+            border-color: var(--text-color);
+        }
 
-.card .content {
-  position: absolute;
-  z-index: 3;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transform: scale(0);
-  transition: 0.5s;
-}
+        /* Navigation des Flèches - RÉTATBLI (Desktop/Tablet) */
+        .slider-nav {
+            position: fixed; 
+            bottom: 50px;
+            right: 50px;
+            z-index: 100;
+        }
 
-.card:hover .content {
-  transform: scale(1);
-  bottom: 25px;
-}
+        .arrow-btn {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            margin-left: 10px;
+            transition: background-color 0.3s, border-color 0.3s;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-.content .title {
-  color: #fff;
-  font-weight: 500;
-  line-height: 1em;
-  font-size: 1em;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-align: center;
- margin-bottom: 163px;
-}
+        .arrow-btn:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
 
-.content .title span {
-  font-weight: 300;
-  font-size: 0.70em;
-  margin: 0;
-}
+        /* --- Styles pour les autres sections (placeholders) --- */
+        .placeholder-content {
+            padding: 20px;
+            max-width: 600px;
+            margin: 0;
+            text-align: left;
+        }
 
-.content .sci {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 5px;
-}
+        .placeholder-content h2 {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
 
-.sci{
-    margin-left: 15px;
-    margin-bottom: 29px;
-}
-.sci li {
-  list-style: none;
-}
+        .placeholder-content p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        
+        /* --- NOUVEAUX STYLES POUR LA SECTION SERVICES --- */
+        /* Reworking #services styles to center content within its 25% viewport slice */
+        #services.page-section {
+            /* Utiliser les styles par défaut de .page-section mais avec un alignement centré */
+            justify-content: center; /* Centrer le contenu horizontalement dans la section de 25% */
+            padding: 0 5%; /* Garder le padding horizontal */
+            /* CORRIGÉ: Empêche l'affichage des barres de défilement dans services */
+            overflow: hidden; 
+        }
+        
+        #services .placeholder-content {
+            /* Le contenu doit s'étendre au maximum */
+            max-width: 1000px; /* Permettre plus de largeur */
+            width: 100%;
+            margin: 0 auto; /* Centrer le bloc placeholder-content */
+            padding: 0;
+            text-align: center;
+        }
+        
+        #services .placeholder-content h2 {
+            /* Styles pour le titre */
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 50px;
+            text-align: center;
+        }
 
-.sci li .fa-brands {
-  width: 14px;
-}
+        /* Ajout de la grille pour les deux cartes */
+        .services-grid {
+            display: flex; 
+            gap: 30px;
+            justify-content: center;
+            width: 100%;
+            margin-top: 20px; /* Espace après le texte d'introduction */
+        }
 
-.sci li .fa-facebook {
-  width: 10px;
-}
+        .service-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 2px solid var(--primary-color); /* Épaississement de la bordure */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            flex: 1; 
+            min-width: 45%; 
+            max-width: 400px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer; /* Ajout du curseur pour indiquer l'interactivité */
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px rgba(201, 162, 77, 0.7);
+        }
 
-.sci li a {
-  position: relative;
-  text-decoration: none;
-  color: rgba(255, 255, 255, 0.5);
-  background: rgba(0, 0, 0, 0.2);
-  fill: currentColor;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 4px;
-  transition: 0.5s;
-  margin-left: -15px;
-}
+        .service-card i {
+            font-size: 60px; /* Augmenter la taille de l'icône */
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
 
-.sci li a:hover {
-  fill: currentColor;
-  color: rgba(255, 255, 255, 1);
-}
-#fit{
-    margin: 0;
-}
-.zal{
-    margin-bottom: -55px;
-}
+        .service-card h3 {
+            font-size: 26px;
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
 
-/* Mail footer*/ 
-.input-wrapper {
-  width: fit-content;
-  height: 45px;
-  border-radius: 20px;
-  padding: 5px;
-  box-sizing: content-box;
-  display: flex;
-  align-items: center;
-  background-color: #292524;
-  margin-left: 55px;
-}
+        .service-card p {
+            font-size: 16px;
+            color: var(--secondary-text-color);
+            line-height: 1.6;
+        }
+        
+        /* --- Styles des Modales de Galerie --- */
+        .modal {
+            display: none; /* Masqué par défaut */
+            position: fixed;
+            z-index: 500; /* Au-dessus de tout */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.95); /* Arrière-plan sombre et opaque */
+            padding-top: 60px;
+            animation: fadeIn 0.3s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
 
-.icon {
-  width: 30px;
-  fill: rgb(255, 255, 255);
-  margin-left: 8px;
-  transition: all 0.3s;
-}
-.input {
-  max-width: 170px;
-  height: 100%;
-  border: none;
-  outline: none;
-  padding-left: 15px;
-  background-color: #292524;
-  color: white;
-  font-size: 1em;
-}
-.input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0px 1000px #292524 inset;
-  -webkit-text-fill-color: #ffffff;
-}
-.Subscribe-btn {
-  height: 100%;
-  width: 95px;
-  border: none;
-  border-radius: 15px;
-  color: rgb(0, 0, 0);
-  cursor: pointer;
-  background-color: #ffffff;
-  font-weight: 500;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  transition: all 0.3s;
-}
-.arrow {
-  /* display: none; */
-  position: absolute;
-  margin-right: 150px;
-  transition: all 0.3s;
-}
-.input-wrapper:active .icon {
-  transform: scale(1.3);
-}
-.Subscribe-btn:hover {
-  color: white;
-}
-.Subscribe-btn:hover .arrow {
-  margin-right: 0;
-  animation: jello-vertical 0.9s both;
-  transform-origin: right;
-}
+        .modal-content {
+            background-color: var(--background-color);
+            margin: 5% auto; 
+            padding: 20px;
+            border: 1px solid var(--primary-color);
+            width: 90%;
+            max-width: 1200px;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(201, 162, 77, 0.5);
+        }
+        
+        .modal-content h2 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 36px;
+        }
 
-@keyframes jello-vertical {
-  0% {
-    transform: scale3d(1, 1, 1);
-  }
-  30% {
-    transform: scale3d(0.75, 1.25, 1);
-  }
-  40% {
-    transform: scale3d(1.25, 0.75, 1);
-  }
-  50% {
-    transform: scale3d(0.85, 1.15, 1);
-  }
-  65% {
-    transform: scale3d(1.05, 0.95, 1);
-  }
-  75% {
-    transform: scale3d(0.95, 1.05, 1);
-  }
-  100% {
-    transform: scale3d(1, 1, 1);
-  }
-}
-.Subscribe-btn:active {
-  transform: scale(0.9);
-}
-.ppp{
-  margin-top: 75px;
-}
+        .close-modal {
+            color: var(--primary-color);
+            float: right;
+            font-size: 35px;
+            font-weight: bold;
+            transition: color 0.3s;
+            cursor: pointer;
+            line-height: 1;
+            margin-top: -10px;
+            margin-right: 5px;
+        }
+
+        .close-modal:hover,
+        .close-modal:focus {
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        /* Styles pour la nouvelle structure de défilement continu (vidéos et images) */
+        
+        /* Conteneur pour limiter strictement le défilement au div (répond à la demande de limite du défilement) */
+        .gallery-scroll-wrapper {
+            width: 100%;
+            overflow: hidden; /* Stricte limite */
+            padding: 10px; /* Ajout du padding pour l'esthétique générale */
+        }
+        
+        /* Définition de l'animation de défilement de droite à gauche */
+        @keyframes scroll-rtl {
+            0% {
+                transform: translateX(0);
+            }
+            /* Pour un défilement infini, la grille contient le contenu dupliqué, donc on défile la moitié */
+            100% {
+                transform: translateX(-50%); 
+            }
+        }
+
+        .gallery-grid {
+            display: flex; /* Changement majeur: de grid à flex pour le défilement horizontal */
+            width: fit-content; /* Permet à la largeur d'être définie par le contenu */
+            /* Animation: 8s, linéaire, sans fin (boucle de défilement) */
+            animation: scroll-rtl 8s linear infinite; 
+            gap: 20px; /* Garde l'espace entre les éléments */
+            padding: 0; /* Retrait du padding du grid */
+        }
+        /* Maintient le défilement lorsque l'utilisateur interagit avec la souris (Desktop) */
+        .gallery-grid:hover {
+            animation-play-state: paused;
+        }
+
+        .gallery-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s;
+            
+            /* Styles pour le défilement */
+            flex-shrink: 0; /* Les empêcher de rétrécir */
+            width: 300px; /* Largeur fixe pour un défilement prévisible et uniforme */
+        }
+        
+        /* Styles spécifiques aux vidéos (iframe ET video) */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* Ratio 16:9 */
+            height: 0;
+        }
+
+        .video-container iframe,
+        .video-container video { /* MODIFICATION POUR INCLURE LES VIDÉOS LOCALES */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            object-fit: cover; /* Assure que la vidéo remplit le conteneur */
+            cursor: pointer; /* Curseur pour indiquer que la vidéo est cliquable */
+        }
+        
+        /* Styles spécifiques aux images */
+        .image-container {
+             cursor: pointer; /* Curseur pour indiquer que l'image est cliquable */
+        }
+        
+        .image-container img {
+            width: 100%;
+            height: 250px; /* Hauteur fixe pour une grille uniforme */
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* Ajout de légende pour les items */
+        .item-caption {
+            padding: 10px;
+            color: var(--secondary-text-color);
+            font-size: 14px;
+            text-align: center;
+        }
+
+        /* --- Nouveaux styles pour la LIGHTBOX IMAGE (Instruction 1) --- */
+        .lightbox-content {
+            display: block;
+            width: auto;
+            max-width: 90%;
+            max-height: 90%;
+            margin: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: zoom 0.6s;
+        }
+
+        @keyframes zoom {
+            from {transform: translate(-50%, -50%) scale(0.1);}
+            to {transform: translate(-50%, -50%) scale(1);}
+        }
+
+        /* Le bouton de fermeture doit être visible au-dessus de tout */
+        #lightbox-modal .close-modal,
+        #video-lightbox-modal .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            opacity: 1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            z-index: 501; 
+        }
+
+        /* Styles pour la lightbox vidéo (Instruction 4) */
+        .video-container-lightbox {
+            width: 80%;
+            max-width: 900px;
+            margin: 5% auto;
+            position: relative;
+        }
+        .video-container-lightbox video {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+        
+        /* --- FIN NOUVEAUX STYLES POUR LA SECTION SERVICES / MODALES --- */
+        
+        /* --- Contact Form Styles --- */
+
+        .contact-form-container {
+            width: 100%;
+            margin-top: 20px; 
+        }
+        
+        .contact-form-container .contact-encouragement {
+            margin-bottom: 30px;
+            color: var(--secondary-text-color);
+            font-size: 16px;
+        }
+
+        .contact-form-container form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            gap: 15px;
+        }
+
+        .input-field,
+        .textarea-field {
+            width: 100%;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(201, 162, 77, 0.3);
+            color: var(--text-color);
+            border-radius: 8px;
+            font-size: 15px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .input-field:focus,
+        .textarea-field:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 10px rgba(201, 162, 77, 0.5);
+        }
+
+        .textarea-field {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .send-btn {
+            padding: 14px 35px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 14px;
+            border-radius: 50px;
+            transition: all 0.3s;
+            letter-spacing: 1px;
+            background-color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            color: var(--background-color);
+            cursor: pointer;
+            margin-top: 10px;
+            align-self: flex-start;
+        }
+
+        .send-btn:hover {
+            background-color: #a8853e;
+            border-color: #a8853e;
+            box-shadow: 0 0 20px rgba(201, 162, 77, 0.8); 
+            transform: translateY(-2px);
+        }
+        
+        ::placeholder { 
+            color: var(--secondary-text-color);
+            opacity: 0.7; 
+        }
+
+        /* --- Pied de Page (Footer) --- */
+        footer {
+            position: fixed; 
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 5%;
+            background-color: transparent; 
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .social-icons-footer a {
+            margin-right: 15px; 
+            font-size: 18px; 
+            border: 1px solid var(--secondary-text-color);
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+            color: var(--secondary-text-color);
+        }
+
+        .social-icons-footer a:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: var(--background-color);
+        }
+
+        .copyright-text {
+            font-size: 12px;
+            color: var(--secondary-text-color);
+            margin-right: 0; 
+        }
+
+        /* --- Menu de Langue & Drapeaux --- */
+        .language-menu {
+            position: fixed;
+            top: 0;
+            right: -300px; 
+            width: 250px;
+            height: 100vh;
+            background-color: rgba(10, 10, 10, 0.95);
+            z-index: 200;
+            padding: 80px 20px 20px;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+            transition: right 0.4s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            backdrop-filter: blur(5px);
+        }
+
+        .language-menu.active {
+            right: 0;
+        }
+
+        .language-menu h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        .language-menu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .language-menu ul li a {
+            display: flex; 
+            align-items: center;
+            padding: 12px 0;
+            color: var(--text-color);
+            font-size: 16px;
+            transition: color 0.2s, padding-left 0.2s;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .language-menu ul li:last-child a {
+            border-bottom: none;
+        }
+
+        .language-menu ul li a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+
+        .close-menu-btn {
+            position: absolute;
+            top: 25px;
+            left: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            color: var(--primary-color);
+            transition: color 0.3s;
+        }
+
+        .close-menu-btn:hover {
+            color: #fff;
+        }
+        
+        /* --- Responsive Design (Media Queries) --- */
+
+        /* Tablet (max-width: 1024px) */
+        @media (max-width: 1024px) {
+            :root {
+                --hero-content-width: 50%; /* Meilleure proportion sur une vue paysage de tablette */
+            }
+            header {
+                padding: 25px 3%;
+            }
+            .hamburger-menu {
+                right: 3%; /* Ajustement de la position du hamburger */
+            }
+            nav ul li {
+                margin-left: 20px;
+            }
+            .page-section {
+                padding-left: 3%;
+                padding-right: 3%;
+            }
+            /* Home/Contact Content */
+            .hero-content {
+                margin-left: 0; 
+                padding: 100px 0;
+            }
+             .placeholder-content.contact-content-left {
+                width: var(--hero-content-width); 
+             }
+             
+            /* About Section - Devient 1 colonne sur Tablette mais le texte reste aligné à gauche */
+            .about-content-grid {
+                grid-template-columns: 1fr;
+                margin-top: -25px;
+                margin-bottom: 205px;
+            }
+            .about-text-column.left .about-block {
+                text-align: left; /* Conserver l'alignement pour le flux */
+            }
+
+            .about-text-column.right .about-block {
+                text-align: left; /* Conserver l'alignement pour le flux */
+            }
+            
+            /* Services */
+             .services-grid {
+                 flex-direction: column;
+                 align-items: center;
+             }
+             
+             .service-card {
+                 max-width: 600px;
+                 min-width: 80%;
+             }
+
+             /* Contact Form */
+            .contact-form-container form {
+                 max-width: 500px;
+                 margin: 0 auto;
+            }
+
+            /* Footer */
+            footer {
+                 padding: 15px 3%;
+            }
+        }
+        
+        /* Mobile (max-width: 768px) - L'OPTIMISATION CLÉ pour Android/iPhone */
+        @media (max-width: 768px) { 
+            /* 1. ACTIVER LE DÉFILEMENT VERTICAL STANDARD ET FLUIDE */
+            body { 
+                /* Permet au contenu de s'étendre et d'être scrollable */
+                overflow-y: auto !important; 
+                overflow-x: hidden !important;
+            }
+
+            .wrapper {
+                /* Désactiver le conteneur horizontal */
+                display: block; 
+                width: 100%; 
+                height: auto; 
+                transition: none !important; 
+                transform: none !important; /* Supprime toute transformation */
+            }
+
+            .page-section {
+                /* Chaque section prend 100% de la largeur et une hauteur auto/vh pour le contenu */
+                width: 100%;
+                min-height: 100vh; /* S'assure qu'une section prend au moins une pleine page pour un look moderne */
+                height: auto; 
+                position: static; /* Supprimer la position relative non nécessaire pour le flux vertical */
+                flex-shrink: 1;
+                /* Padding vertical adapté */
+                padding: 100px 5% 50px 5%; 
+                align-items: flex-start; /* Aligner le contenu en haut (si `min-height` > contenu) */
+            }
+            
+            /* 2. OPTIMISATIONS D'APPARENCE */
+            header { padding: 20px 5%; } 
+            nav { display: none; }
+            
+            /* Cacher les images sur mobile pour libérer de l'espace */
+            .image-slider, .contact-image-container { display: none; }
+            
+            /* Contenu principal: prend toute la largeur, centré */
+            .hero-content { 
+                width: 100%; 
+                max-width: 100%; 
+                padding: 0; 
+                text-align: center; 
+                margin-left: 0; 
+            }
+            .placeholder-content.contact-content-left { 
+                width: 100%; 
+                text-align: center; 
+                padding: 0; 
+            }
+            .hero-content h1 { font-size: 40px; }
+            .hero-content h2 { font-size: 20px; }
+            .bio { text-align: center; max-width: none; }
+            
+            /* Boutons CTA empilés */
+            .cta-buttons { 
+                display: flex; 
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+            }
+            .cta-buttons a { margin-right: 0; }
+            
+            /* Section About: ajustement de la marge */
+             #about.page-section { 
+                 padding: 50px 5%; 
+                 min-height: auto; 
+             }
+             .about-content-grid {
+                 margin-bottom: 50px; 
+             }
+            
+            /* Cacher les flèches de navigation (obsolètes en défilement vertical) */
+            .slider-nav { display: none; }
+            
+            /* Footer: doit être en position 'static' pour être à la fin du défilement */
+            footer { 
+                position: static; 
+                flex-direction: column; 
+                justify-content: center; 
+                gap: 10px; 
+                padding: 10px 5%; 
+                background-color: var(--background-color); 
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            } 
+            .social-icons-footer { order: 1; } 
+            .copyright-text { order: 2; margin-right: 0; } 
+            
+            /* Formulaire Contact */
+            #contact .contact-form-container form { align-items: center; } 
+            .form-group { flex-direction: column; gap: 10px; } 
+            .send-btn { align-self: center; } 
+        }
 
     </style>
+    ...
 </head>
 <body>
-  <!-- header -->
-    <div class="header">
-        <div class="hg">
-            <h1>Ny Aro</h1>
-            <img src="img/logo.png" height="125px" width="125px" alt="">
+    <div id="video-lightbox-modal" class="modal" onclick="closeVideoLightbox()">
+        <div class="video-container-lightbox" onclick="event.stopPropagation()">
+            <span class="close-modal" data-i18n="close_modal" onclick="closeVideoLightbox()">×</span>
+            <video id="lightbox-video" controls loop playsinline></video>
         </div>
-        <div class="hd">
+    </div>
+
+    <div id="lightbox-modal" class="modal" onclick="closeLightbox()">
+        <span class="close-modal" data-i18n="close_modal" onclick="closeLightbox()">×</span>
+        <img class="lightbox-content" id="lightbox-image">
+    </div>
+
+    <div id="image-modal" class="modal" onclick="closeModal('image')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close-modal" data-i18n="close_modal" onclick="closeModal('image')">×</span>
+            <h2 data-i18n="modal_image_title">Galerie Photos & Design</h2>
+            
+            <div class="gallery-scroll-wrapper">
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <div class="image-container">
+                            <img src="img/exp/SOCIAL MEDIA POST.png" alt="Création graphique 1" onclick="openImageLightbox('img/exp/SOCIAL MEDIA POST.png')">
+                        </div>
+                        <div class="item-caption" data-i18n="image_caption_1">Création Graphique pour les Réseaux Sociaux</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="image-container">
+                            <img src="img/exp/Event.jpg" alt="Photo d'événement 2" onclick="openImageLightbox('img/exp/Event.jpg')">
+                        </div>
+                        <div class="item-caption" data-i18n="image_caption_2">Photographie et Retouche d'Événement</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="image-container">
+                            <img src="img/exp/panneau sucette 3d simu.png" alt="Logo Design 3" onclick="openImageLightbox('img/exp/panneau sucette 3d simu.png')">
+                        </div>
+                        <div class="item-caption" data-i18n="image_caption_3">Conception de Logo et Identité Visuelle</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="image-container">
+                            <img src="img/exp/Porte clé simu 1.png" alt="Photographie 4" onclick="openImageLightbox('img/exp/Porte clé simu 1.png')">
+                        </div>
+                        <div class="item-caption" data-i18n="image_caption_4">Photo de Produit (E-commerce)</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="image-container">
+                            <img src="img/exp/Porte clé simu 2.png" alt="Création graphique 1" onclick="openImageLightbox('img/exp/Porte clé simu 2.png')">
+                        </div>
+                        <div class="item-caption" data-i18n="image_caption_1">Création Graphique pour les Réseaux Sociaux</div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <div class="image-container">
+                            <img src="img/exp/SOCIAL MEDIA POST.png" alt="Création graphique 1" onclick="openImageLightbox('img/exp/SOCIAL MEDIA POST.png')">
+                        </div>
+                        <div class="item-caption" data-i18n="image_caption_1">Création Graphique pour les Réseaux Sociaux</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="image-container">
+                            <img src="img/exp/Event.jpg" alt="Photo d'événement 2" onclick="openImageLightbox('img/exp/Event.jpg')">
+                        </div>
+                        <div class="item-caption" data-i18n="image_caption_2">Photographie et Retouche d'Événement</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="image-container">
+                            <img src="img/exp/panneau sucette 3d simu.png" alt="Logo Design 3" onclick="openImageLightbox('img/exp/panneau sucette 3d simu.png')">
+                        </div>
+                        <div class="item-caption" data-i18n="image_caption_3">Conception de Logo et Identité Visuelle</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="image-container">
+                            <img src="img/exp/Porte clé simu 1.png" alt="Photographie 4" onclick="openImageLightbox('img/exp/Porte clé simu 1.png')">
+                        </div>
+                        <div class="item-caption" data-i18n="image_caption_4">Photo de Produit (E-commerce)</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="image-container">
+                            <img src="img/exp/Porte clé simu 2.png" alt="Création graphique 1" onclick="openImageLightbox('img/exp/Porte clé simu 2.png')">
+                        </div>
+                        <div class="item-caption" data-i18n="image_caption_1">Création Graphique pour les Réseaux Sociaux</div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="video-modal" class="modal" onclick="closeModal('video')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close-modal" data-i18n="close_modal" onclick="closeModal('video')">×</span>
+            <h2 data-i18n="modal_video_title">Galerie Vidéos</h2>
+            
+            <div class="gallery-scroll-wrapper">
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <div class="video-container">
+                            <video controls autoplay loop muted data-i18n-video-src="video_src_1" onclick="openVideoLightbox('video_src_1')" playsinline></video>
+                        </div>
+                        <div class="item-caption" data-i18n="video_caption_1">Projet de Montage Commercial (Jeu Vidéo)</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="video-container">
+                            <video controls autoplay loop muted data-i18n-video-src="video_src_2" onclick="openVideoLightbox('video_src_2')" playsinline></video>
+                        </div>
+                        <div class="item-caption" data-i18n="video_caption_2">Démonstration de Compétences en Post-Production</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="video-container">
+                            <video controls autoplay loop muted data-i18n-video-src="video_src_3" onclick="openVideoLightbox('video_src_3')" playsinline></video>
+                        </div>
+                        <div class="item-caption" data-i18n="video_caption_3">Court-Métrage ou Publicité Sociale</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="video-container">
+                            <video controls autoplay loop muted data-i18n-video-src="video_src_4" onclick="openVideoLightbox('video_src_4')" playsinline></video>
+                        </div>
+                        <div class="item-caption" data-i18n="video_caption_4">Projet de Montage Commercial (Jeu Vidéo)</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="video-container">
+                            <video controls autoplay loop muted data-i18n-video-src="video_src_5" onclick="openVideoLightbox('video_src_5')" playsinline></video>
+                        </div>
+                        <div class="item-caption" data-i18n="video_caption_5">Projet de Montage Commercial (Jeu Vidéo)</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="video-container">
+                            <video controls autoplay loop muted data-i18n-video-src="video_src_6" onclick="openVideoLightbox('video_src_6')" playsinline></video>
+                        </div>
+                        <div class="item-caption" data-i18n="video_caption_6">Projet de Montage Commercial (Jeu Vidéo)</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="video-container">
+                            <video controls autoplay loop muted data-i18n-video-src="video_src_7" onclick="openVideoLightbox('video_src_7')" playsinline></video>
+                        </div>
+                        <div class="item-caption" data-i18n="video_caption_7">Projet de Montage Commercial (Jeu Vidéo)</div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <div class="video-container">
+                            <video controls autoplay loop muted data-i18n-video-src="video_src_1" onclick="openVideoLightbox('video_src_1')" playsinline></video>
+                        </div>
+                        <div class="item-caption" data-i18n="video_caption_1">Projet de Montage Commercial (Jeu Vidéo)</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="video-container">
+                            <video controls autoplay loop muted data-i18n-video-src="video_src_2" onclick="openVideoLightbox('video_src_2')" playsinline></video>
+                        </div>
+                        <div class="item-caption" data-i18n="video_caption_2">Démonstration de Compétences en Post-Production</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="video-container">
+                            <video controls autoplay loop muted data-i18n-video-src="video_src_3" onclick="openVideoLightbox('video_src_3')" playsinline></video>
+                        </div>
+                        <div class="item-caption" data-i18n="video_caption_3">Court-Métrage ou Publicité Sociale</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="wrapper">
+        
+        <section id="home" class="page-section">
+            <div class="image-slider">
+                <img id="background-img" src="./img/i6.png" alt="Image de fond">
+            </div>
+            <div class="hero-content">
+                <p class="greeting" data-i18n="home_greeting">Bonjour!</p>
+                <h1>Ny Aro<span class="logo-z">.</span></h1>
+                <h2 class="name-only">OLINJANAHARY</h2>
+                <h2><span data-i18n="home_subtitle">MARKETING & FINANCIAL OFFICER</span></h2>
+                <p class="bio" data-i18n="home_bio">Je suis Ny Aro, et je suis à la recherche d'un poste junior pour développer davantage mes compétences. Étudiant dynamique, curieux et polyvalent. Très motivé à apprendre et à grandir dans un environnement professionnel.</p>
+                <div class="cta-buttons">
+                    <a href="img/Ny Aro CV.pdf" download="Ny Aro CV.pdf" class="primary-btn" data-i18n="home_cv_btn">Télécharger le CV</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="page-section">
+            <h2 class="placeholder-content" data-i18n="about_title" id="appdm" style="text-align: center; margin-bottom: 50px;">À Propos de Moi</h2>
+            <div class="about-content-grid">
+                <div class="about-text-column left">
+                    <div class="about-block">
+                        <h3 data-i18n="about_me_title">Mon Profil</h3>
+                        <p data-i18n="about_me_text">
+                            Je suis Ny Aro, étudiant dynamique et polyvalent en Marketing & Management. Je suis constamment à la recherche de nouvelles connaissances et passionné par l'élaboration de stratégies innovantes. Mon objectif est d'acquérir de l'expérience dans un environnement professionnel stimulant.
+                        </p>
+                    </div>
+                    <div class="about-block">
+                        <h3 data-i18n="about_academic_title">Mon Parcours Académique</h3>
+                        <p data-i18n="about_academic_text">
+                            Je prépare actuellement un Bachelor en Marketing et Business (2022-2025) à l'ESSCA University, et je prévois de poursuivre mes études avec un Master of Business Administration (MBA) (2025-2027) à l'UTM Mauritius. Je suis doté d'une base solide en gestion et marketing.
+                        </p>
+                    </div>
+                </div>
+                <div class="about-text-column right">
+                    <div class="about-block">
+                        <h3 data-i18n="about_pro_title">Mon Expérience Professionnelle</h3>
+                        <p data-i18n="about_pro_text">
+                            J'ai acquis de l'expérience pratique grâce à des stages en Digital Marketing (AGRIVAL), Contrôle Qualité (AGRIFARM), et Gestion des Stocks (SMTP). Ces expériences m'ont permis de développer des compétences clés en créativité, analyse critique, travail d'équipe et organisation.
+                        </p>
+                    </div>
+                    <div class="about-block">
+                        <h3 data-i18n="about_hobbies_title">Mes Intérêts</h3>
+                        <p data-i18n="about_hobbies_text">
+                            En dehors de mes études, je suis passionné par les réseaux sociaux, le dessin et la méditation. Ces activités m'aident à développer ma créativité et à maintenir l'équilibre essentiel à la réussite professionnelle.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="page-section">
+            <div class="placeholder-content">
+                <h2 data-i18n="services_title">Mes Services</h2>
+                <p data-i18n="services_text" style="margin-bottom: 50px;">
+                    Voici mes principaux domaines d'expertise. Cliquez sur une carte pour voir des exemples de projets réalisés.
+                </p>
+                <div class="services-grid">
+                    <div class="service-card" onclick="openModal('video')">
+                        <i class="fas fa-video"></i>
+                        <h3 data-i18n="service_video_title">Production Vidéo</h3>
+                        <p data-i18n="service_video_text">
+                            Création de contenu vidéo engageant pour les réseaux sociaux, la publicité ou les présentations d'entreprise. Montage, post-production et optimisation pour différentes plateformes.
+                        </p>
+                    </div>
+                    <div class="service-card" onclick="openModal('image')">
+                        <i class="fas fa-camera"></i>
+                        <h3 data-i18n="service_image_title">Conception d'Images</h3>
+                        <p data-i18n="service_image_text">
+                            Création graphique (post, stories, bannières), retouche photo professionnelle et conception de supports visuels pour renforcer votre identité de marque.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" class="page-section">
+            <div class="contact-image-container">
+                <img src="img/i7.png" alt="Photo de profil de Ny Aro">
+            </div>
+            <div class="placeholder-content contact-content-left">
+                <h2 data-i18n="contact_title">Restons en Contact</h2>
+                <p class="contact-encouragement" data-i18n="contact_encouragement">Vous avez un projet, une opportunité ou simplement une question ? Envoyez-moi un message ! Je suis toujours ouvert aux nouvelles collaborations et avide d'apprendre.</p>
+                <div class="contact-form-container">
+                    <form action="mailto:nyaro.o07@gmail.com?subject=Prise%20de%20Contact%20depuis%20votre%20Portfolio" method="POST" enctype="text/plain">
+                        <div class="form-group">
+                            <input type="text" class="input-field" name="Nom" placeholder="Nom" required data-i18n-placeholder="contact_name_placeholder">
+                            <input type="text" class="input-field" name="Prenom" placeholder="Prénom" required data-i18n-placeholder="contact_firstname_placeholder">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="input-field" name="Email" placeholder="Email" required data-i18n-placeholder="contact_email_placeholder">
+                            <select class="input-field" name="Raison" required data-i18n-placeholder="contact_age_placeholder">
+                                <option value="" disabled selected data-i18n="contact_age_placeholder">Raison du contact</option>
+                                <option value="academique" data-i18n="reason_academic">Académique</option>
+                                <option value="professionel" data-i18n="reason_professional">Professionnel</option>
+                                <option value="autres" data-i18n="reason_other">Autres</option>
+                            </select>
+                        </div>
+                        <textarea class="textarea-field" name="body" placeholder="Votre message ou votre proposition..." required data-i18n-placeholder="contact_message_placeholder"></textarea>
+                        <button type="submit" class="send-btn" data-i18n="contact_send_btn">Envoyer</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        
+    </div>
+
+    <header>
+        <div class="logo">Ny Aro<span class="logo-z">.</span></div>
+        <nav>
             <ul>
-                <li class="current"><a href="index.html"> Accueil</a></li>
-                <li class="tsisy"><a href="Projet.html"><strong>Projet</strong></a></li>
-                <li class="tsisy"><a href="About.html"><strong>A propos</strong></a></li>
-                <li class="tsisy"><a href="Contact.html"><strong>Contact</strong></a></li>
+                <li><a href="#home" class="active" data-i18n="home_link" data-section-index="0">Accueil</a></li>
+                <li><a href="#about" data-i18n="about_link" data-section-index="1">À Propos</a></li>
+                <li><a href="#services" data-i18n="services_link" data-section-index="2">Services</a></li>
+                <li><a href="#contact" data-i18n="contact_link" data-section-index="3">Contact</a></li>
             </ul>
+        </nav>
+        <div class="header-actions">
+             </div>
+    </header>
+    
+    <div class="hamburger-menu" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+    </div>
+    
+    <div class="language-menu" id="language-menu">
+        <span class="close-menu-btn" onclick="toggleMenu()">×</span>
+        <h3 data-i18n="lang_select_title">Sélectionnez la Langue</h3>
+        <ul id="language-list">
+            </ul>
+    </div>
+
+    <div class="slider-nav">
+        <button id="prev-btn" class="arrow-btn"><i class="fas fa-chevron-left"></i></button>
+        <button id="next-btn" class="arrow-btn"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <footer>
+        <div class="social-icons-footer">
+            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
         </div>
-    </div>
+        <p class="copyright-text" data-i18n="footer_rights">© <span id="current-year">2024</span> Ny Aro. Tous droits réservés.</p>
+    </footer>
 
-    <!-- break-->
-    <div class="break">  
-    </div>
+    <script>
+        // --- Traductions (Reste inchangé) ---
+        const translations = {
+            fr: {
+                page_title: 'Ny Aro-Portfolio',
+                home_link: 'Accueil',
+                about_link: 'À Propos',
+                services_link: 'Services',
+                contact_link: 'Contact',
+                lang_select_title: 'Sélectionnez la Langue',
+                lang_mg: 'Malgache',
+                lang_fr: 'Français',
+                lang_en: 'Anglais',
+                lang_zh: 'Chinois',
+                lang_ar: 'Arabe',
+                lang_de: 'Allemand',
+                lang_mrc: 'Kréol Morisien',
+                home_greeting: 'Bonjour!',
+                home_subtitle: 'MARKETING & FINANCIAL OFFICER',
+                home_bio: 'Je suis Ny Aro, et je suis à la recherche d\'un poste junior pour développer davantage mes compétences. Étudiant dynamique, curieux et polyvalent. Très motivé à apprendre et à grandir dans un environnement professionnel.',
+                home_cv_btn: 'Télécharger le CV',
+                home_contact_btn: 'Contacter',
+                about_title: 'À Propos de Moi',
+                about_me_title: 'Mon Profil',
+                about_me_text: 'Je suis Ny Aro, étudiant dynamique et polyvalent en Marketing & Management. Je suis constamment à la recherche de nouvelles connaissances et passionné par l\'élaboration de stratégies innovantes. Mon objectif est d\'acquérir de l\'expérience dans un environnement professionnel stimulant.',
+                about_academic_title: 'Mon Parcours Académique',
+                about_academic_text: 'Je prépare actuellement un Bachelor en Marketing et Business (2022-2025) à l\'ESSCA University, et je prévois de poursuivre mes études avec un Master of Business Administration (MBA) (2025-2027) à l\'UTM Mauritius. Je suis doté d\'une base solide en gestion et marketing.',
+                about_pro_title: 'Mon Expérience Professionnelle',
+                about_pro_text: 'J\'ai acquis de l\'expérience pratique grâce à des stages en Digital Marketing (AGRIVAL), Contrôle Qualité (AGRIFARM), et Gestion des Stocks (SMTP). Ces expériences m\'ont permis de développer des compétences clés en créativité, analyse critique, travail d\'équipe et organisation.',
+                about_hobbies_title: 'Mes Intérêts',
+                about_hobbies_text: 'En dehors de mes études, je suis passionné par les réseaux sociaux, le dessin et la méditation. Ces activités m\'aident à développer ma créativité et à maintenir l\'équilibre essentiel à la réussite professionnelle.',
+                services_title: 'Mes Services',
+                services_text: 'Voici mes principaux domaines d\'expertise. Cliquez sur une carte pour voir des exemples de projets réalisés.',
+                service_video_title: 'Production Vidéo',
+                service_video_text: 'Création de contenu vidéo engageant pour les réseaux sociaux, la publicité ou les présentations d\'entreprise. Montage, post-production et optimisation pour différentes plateformes.',
+                service_image_title: 'Conception d\'Images',
+                service_image_text: 'Création graphique (post, stories, bannières), retouche photo professionnelle et conception de supports visuels pour renforcer votre identité de marque.',
+                contact_title: 'Restons en Contact',
+                contact_encouragement: 'Vous avez un projet, une opportunité ou simplement une question ? Envoyez-moi un message ! Je suis toujours ouvert aux nouvelles collaborations et avide d\'apprendre.',
+                contact_name_placeholder: 'Nom',
+                contact_firstname_placeholder: 'Prénom',
+                contact_email_placeholder: 'Email',
+                contact_age_placeholder: 'Raison du contact',
+                contact_message_placeholder: 'Votre message ou votre proposition...',
+                contact_send_btn: 'Envoyer',
+                footer_rights: 'Tous droits réservés.',
+                modal_video_title: 'Galerie Vidéos',
+                modal_image_title: 'Galerie Photos & Design',
+                close_modal: '×',
+                video_caption_1: 'Projet de Montage Commercial (Jeu Vidéo)',
+                video_caption_2: 'Démonstration de Compétences en Post-Production',
+                video_caption_3: 'Court-Métrage ou Publicité Sociale',
+                video_caption_4: 'Projet de Montage Commercial (Jeu Vidéo)',
+                video_caption_5: 'Projet de Montage Commercial (Jeu Vidéo)',
+                video_caption_6: 'Projet de Montage Commercial (Jeu Vidéo)',
+                video_caption_7: 'Projet de Montage Commercial (Jeu Vidéo)',
+                image_caption_1: 'Création Graphique pour les Réseaux Sociaux',
+                image_caption_2: 'Photographie et Retouche d\'Événement',
+                image_caption_3: 'Conception de Logo et Identité Visuelle',
+                image_caption_4: 'Photo de Produit (E-commerce)',
+                reason_academic: 'Académique',
+                reason_professional: 'Professionnel',
+                reason_other: 'Autres',
+                // Source des images et vidéos
+                image_src_1: 'img/exp/SOCIAL MEDIA POST.png',
+                image_src_2: 'img/exp/Event.jpg',
+                image_src_3: 'img/exp/panneau sucette 3d simu.png',
+                image_src_4: 'img/exp/Porte clé simu 1.png',
+                video_src_1: 'video/08 mars 2025.mp4',
+                video_src_2: 'video/Animation Panneau simu by Ny Aro test.mp4',
+                video_src_3: 'video/ASMR lait cere.mp4',
+                video_src_4: 'video/bonne année 2025 agrival.mp4',
+                video_src_5: 'video/Demos Nutrilait by Ny Aro test.mp4',
+                video_src_6: 'video/happy new year nutrifood.mp4',
+                video_src_7: 'video/Tuto Nutrilait.mp4',
+            },
+            // ... (traductions pour mg, en, zh, ar, de, mrc) ... 
+            mg: { 
+                page_title: 'Ny Aro-Portfolio', home_link: 'Fandraisana', about_link: 'Momba Ahy', services_link: 'Tolotra', contact_link: 'Hifandraisana', lang_select_title: 'Safidio ny Teny', lang_mg: 'Malgache', lang_fr: 'Français', lang_en: 'Anglais', lang_zh: 'Chinois', lang_ar: 'Arabe', lang_de: 'Alemana', lang_mrc: 'Kréol Morisien', home_greeting: 'Miarahaba!', home_subtitle: 'MARKETING & FINANCIAL OFFICER', home_bio: 'Izaho Ny Aro, ary mitady toerana junior aho mba hampivelarana bebe kokoa ny fahaizako. Mpianatra mavitrika, liam-pivoarana, ary mahay miasa amin\'ny sehatra maro. Tena mazoto mianatra sy mitombo amin\'ny tontolo arak\'asa.', home_cv_btn: 'Sintomy ny CV', home_contact_btn: 'Hifandray Aminy', about_title: 'Momba Ahy', about_me_title: 'Ny Momba Ahy', about_me_text: 'Izaho Ny Aro, mpianatra mavitrika sy mahay miasa amin\'ny Marketing & Management. Mikatsaka fahalalana vaovao tsy an-kiato aho ary mazoto amin\'ny famolavolana paikady vaovao. Ny tanjoko dia ny hahazo traikefa amin\'ny tontolo arak\'asa mandrisika.', about_academic_title: 'Ny Diako Ara-pianarana', about_academic_text: 'Manomana ny Baccelaureat amin\'ny Marketing sy ny Business (2022-2025) ao amin\'ny ESSCA University aho, ary manomana ny hanohy ny fianarako amin\'ny Master of Business Administration (MBA) (2025-2027) ao amin\'ny UTM Mauritius. Manana fototra mafy orina amin\'ny fitantanana sy ny marketing aho.', about_pro_title: 'Ny Traikefako Ara-barotra', about_pro_text: 'Nahazo traikefa azo ampiharina aho tamin\'ny alalan\'ny stage tamin\'ny Digital Marketing (AGRIVAL), Fanaraha-maso ny Kalitao (AGRIFARM), ary Fitantanana ny Tahiry (SMTP). Ireo traikefa ireo dia nampivelatra ny fahaizako manokana amin\'ny famoronana, fanadihadiana mitsikera, fiaraha-miasa ary fandaminana.', about_hobbies_title: 'Ny Haliana Amiko', about_hobbies_text: 'Ankoatra ny fianarako, liam-pivoarana amin\'ny tambajotra sosialy, ny sary, ary ny fisaintsainana aho. Manampy ahy hampivelatra ny fahaizako mamorona sy hitazona ny fandanjalanjana ilaina amin\'ny fahombiazana ara-barotra ireo asa ireo.', services_title: 'Ny Tolotra Ataoko', services_text: 'Ireto ny sehatra lehibe ananako traikefa. Tsindrio eo amin\'ny karatra iray hijerena ny ohatra amin\'ny asa vita.', service_video_title: 'Famokarana Horonantsary', service_video_text: 'Famoronana votoaty horonantsary manaitra ho an\'ny tambajotra sosialy, dokambarotra na fanolorana orinasa. Fanovana, famokarana aorian\'ny famokarana ary fanatsarana ho an\'ny sehatra isan-karazany.', service_image_title: 'Famolavolana Sary', service_image_text: 'Famoronana sary (post, stories, sora-baventy), fanovana sary matihanina ary famolavolana fanohanana hita maso hanamafisana ny maha-izy ny marika anao.', contact_title: 'Andao Hifandray', contact_encouragement: 'Manana tetikasa, fahafahana na fanontaniana fotsiny ve ianao? Alefaso hafatra aho! Vonona hatrany amin\'ny fiaraha-miasa vaovao aho ary liana ny hianatra.', contact_name_placeholder: 'Anarana', contact_firstname_placeholder: 'Fanampiny', contact_email_placeholder: 'Mailaka', contact_age_placeholder: 'Antony hifandraisana', contact_message_placeholder: 'Ny hafatrao na ny tolotra anananao...', contact_send_btn: 'Alefa', footer_rights: 'Zo rehetra voatokana.', modal_video_title: 'Galerie Horonantsary', modal_image_title: 'Galerie Sary/Design', video_caption_1: 'Tetikasa Fanovana Ara-barotra (Lalao Vidéo)', video_caption_2: 'Fanehoana ny Fahaizana Post-Production', video_caption_3: 'Horonantsary Fohy na Dokambarotra Sosialy', video_caption_4: 'Tetikasa Fanovana Ara-barotra (Lalao Vidéo)', video_caption_5: 'Tetikasa Fanovana Ara-barotra (Lalao Vidéo)', video_caption_6: 'Tetikasa Fanovana Ara-barotra (Lalao Vidéo)', video_caption_7: 'Tetikasa Fanovana Ara-barotra (Lalao Vidéo)', image_caption_1: 'Famoronana Sary ho an\'ny Tambajotra Sosialy', image_caption_2: 'Sary Fanasan\'ny Olona sy Fanovana', image_caption_3: 'Famolavolana Logo sy Fampahafantarana Hita Maso', image_caption_4: 'Sary Vokatra (E-commerce)', reason_academic: 'Ara-pianarana', reason_professional: 'Arak\'asa', reason_other: 'Hafa', video_src_1: 'video/08 mars 2025.mp4', video_src_2: 'video/Animation Panneau simu by Ny Aro test.mp4', video_src_3: 'video/ASMR lait cere.mp4', video_src_4: 'video/bonne année 2025 agrival.mp4', video_src_5: 'video/Demos Nutrilait by Ny Aro test.mp4', video_src_6: 'video/happy new year nutrifood.mp4', video_src_7: 'video/Tuto Nutrilait.mp4', },
+            //... (autres langues) ...
+            en: { 
+                page_title: 'Ny Aro-Portfolio', home_link: 'Home', about_link: 'About', services_link: 'Services', contact_link: 'Contact', lang_select_title: 'Select Language', lang_mg: 'Malagasy', lang_fr: 'French', lang_en: 'English', lang_zh: 'Chinese', lang_ar: 'Arabic', lang_de: 'German', lang_mrc: 'Mauritian Creole', home_greeting: 'Hello!', home_subtitle: 'MARKETING & FINANCIAL OFFICER', home_bio: 'I am Ny Aro, and I am looking for a junior position to further develop my skills. Dynamic, curious, and versatile student. Highly motivated to learn and grow in a professional environment.', home_cv_btn: 'Download CV', home_contact_btn: 'Contact Me', about_title: 'About Me', about_me_title: 'My Profile', about_me_text: 'I am Ny Aro, a dynamic and versatile student in Marketing & Management. I am constantly seeking new knowledge and passionate about developing innovative strategies. My goal is to gain experience in a stimulating professional environment.', about_academic_title: 'My Academic Journey', about_academic_text: 'I am currently preparing for a Bachelor in Marketing and Business (2022-2025) at ESSCA University, and I plan to continue my studies with a Master of Business Administration (MBA) (2025-2027) at UTM Mauritius. I have a solid foundation in management and marketing.', about_pro_title: 'My Professional Experience', about_pro_text: 'I have gained practical experience through internships in Digital Marketing (AGRIVAL), Quality Control (AGRIFARM), and Inventory Management (SMTP). These experiences have allowed me to develop key skills in creativity, critical analysis, teamwork, and organization.', about_hobbies_title: 'My Interests', about_hobbies_text: 'Outside of my studies, I am passionate about social networks, drawing, and meditation. These activities help me develop my creativity and maintain the essential balance for professional success.', services_title: 'My Services', services_text: 'Here are my main areas of expertise. Click on a card to see examples of completed projects.', service_video_title: 'Video Production', service_video_text: 'Creation of engaging video content for social media, advertising, or corporate presentations. Editing, post-production, and optimization for various platforms.', service_image_title: 'Image Design', service_image_text: 'Graphic creation (posts, stories, banners), professional photo retouching, and visual support design to strengthen your brand identity.', contact_title: 'Let\'s Connect', contact_encouragement: 'Do you have a project, an opportunity, or just a question? Send me a message! I am always open to new collaborations and eager to learn.', contact_name_placeholder: 'Name', contact_firstname_placeholder: 'First Name', contact_email_placeholder: 'Email', contact_age_placeholder: 'Reason for Contact', contact_message_placeholder: 'Your message or proposal...', contact_send_btn: 'Send', footer_rights: 'All rights reserved.', modal_video_title: 'Video Gallery', modal_image_title: 'Photo & Design Gallery', video_caption_1: 'Commercial Editing Project (Video Game)', video_caption_2: 'Post-Production Skills Demonstration', video_caption_3: 'Short Film or Social Ad', video_caption_4: 'Commercial Editing Project (Video Game)', video_caption_5: 'Commercial Editing Project (Video Game)', video_caption_6: 'Commercial Editing Project (Video Game)', video_caption_7: 'Commercial Editing Project (Video Game)', image_caption_1: 'Graphic Design for Social Media', image_caption_2: 'Event Photography and Retouching', image_caption_3: 'Logo Design and Visual Identity', image_caption_4: 'Product Photography (E-commerce)', reason_academic: 'Academic', reason_professional: 'Professional', reason_other: 'Other', video_src_1: 'video/08 mars 2025.mp4', video_src_2: 'video/Animation Panneau simu by Ny Aro test.mp4', video_src_3: 'video/ASMR lait cere.mp4', video_src_4: 'video/bonne année 2025 agrival.mp4', video_src_5: 'video/Demos Nutrilait by Ny Aro test.mp4', video_src_6: 'video/happy new year nutrifood.mp4', video_src_7: 'video/Tuto Nutrilait.mp4', },
+            zh: { 
+                page_title: 'Ny Aro作品集', home_link: '主页', about_link: '关于我', services_link: '服务', contact_link: '联系我', lang_select_title: '选择语言', lang_mg: '马达加斯加语', lang_fr: '法语', lang_en: '英语', lang_zh: '中文', lang_ar: '阿拉伯语', lang_de: '德语', lang_mrc: '毛里求斯克里奥尔语', home_greeting: '你好！', home_subtitle: '营销与财务官', home_bio: '我是Ny Aro，正在寻找一个初级职位以进一步发展我的技能。我是一名充满活力、好奇心强、多才多艺的学生。我非常渴望在专业环境中学习和成长。', home_cv_btn: '下载简历', home_contact_btn: '联系我', about_title: '关于我', about_me_title: '我的个人资料', about_me_text: '我是Ny Aro，一名充满活力、多才多艺的营销与管理学生。我不断寻求新知识，并对制定创新战略充满热情。我的目标是在一个鼓舞人心的专业环境中积累经验。', about_academic_title: '我的学术历程', about_academic_text: '我目前正在ESSCA大学攻读市场营销和商业学士学位（2022-2025），并计划在毛里求斯UTM继续攻读工商管理硕士（MBA）（2025-2027）。我在管理和营销方面拥有坚实的基础。', about_pro_title: '我的专业经验', about_pro_text: '我通过在数字营销（AGRIVAL）、质量控制（AGRIFARM）和库存管理（SMTP）方面的实习获得了实践经验。这些经验使我发展了在创造力、批判性分析、团队合作和组织方面的关键技能。', about_hobbies_title: '我的兴趣', about_hobbies_text: '在学习之外，我对社交网络、绘画和冥想充满热情。这些活动帮助我发展创造力，并保持职业成功所必需的平衡。', services_title: '我的服务', services_text: '以下是我的主要专业领域。点击卡片查看已完成的项目示例。', service_video_title: '视频制作', service_video_text: '为社交媒体、广告或企业演示创建引人入胜的视频内容。进行编辑、后期制作和针对不同平台的优化。', service_image_title: '图像设计', service_image_text: '图形创作（帖子、故事、横幅）、专业照片修饰以及设计视觉支持，以增强您的品牌形象。', contact_title: '保持联系', contact_encouragement: '您有一个项目、一个机会，或者只是一个问题？给我发信息吧！我随时欢迎新的合作，并渴望学习。', contact_name_placeholder: '姓氏', contact_firstname_placeholder: '名字', contact_email_placeholder: '电子邮件', contact_age_placeholder: '联系原因', contact_message_placeholder: '您的信息或建议...', contact_send_btn: '发送', footer_rights: '保留所有权利。', modal_video_title: '视频画廊', modal_image_title: '图片/设计画廊', video_caption_1: '商业剪辑项目（视频游戏）', video_caption_2: '后期制作技能演示', video_caption_3: '短片或社会广告', video_caption_4: '商业剪辑项目（视频游戏）', video_caption_5: '商业剪辑项目（视频游戏）', video_caption_6: '商业剪辑项目（视频游戏）', video_caption_7: '商业剪辑项目（视频游戏）', image_caption_1: '社交媒体图形设计', image_caption_2: '活动摄影和修饰', image_caption_3: '标志设计和视觉识别', image_caption_4: '产品摄影（电子商务）', reason_academic: '学术', reason_professional: '专业', reason_other: '其他', video_src_1: 'video/08 mars 2025.mp4', video_src_2: 'video/Animation Panneau simu by Ny Aro test.mp4', video_src_3: 'video/ASMR lait cere.mp4', video_src_4: 'video/bonne année 2025 agrival.mp4', video_src_5: 'video/Demos Nutrilait by Ny Aro test.mp4', video_src_6: 'video/happy new year nutrifood.mp4', video_src_7: 'video/Tuto Nutrilait.mp4', },
+            ar: { 
+                page_title: 'محفظة ني آرو', home_link: 'الرئيسية', about_link: 'عني', services_link: 'الخدمات', contact_link: 'اتصل بي', lang_select_title: 'اختر اللغة', lang_mg: 'المالاجاشية', lang_fr: 'الفرنسية', lang_en: 'الإنجليزية', lang_zh: 'الصينية', lang_ar: 'العربية', lang_de: 'الألمانية', lang_mrc: 'الكريول الموريشية', home_greeting: 'مرحباً!', home_subtitle: 'مسؤول التسويق والمالية', home_bio: 'أنا ني آرو، وأبحث عن منصب مبتدئ لتطوير مهاراتي بشكل أكبر. طالب ديناميكي، فضولي ومتعدد الاستخدامات. متحمس جداً للتعلم والنمو في بيئة مهنية.', home_cv_btn: 'تحميل السيرة الذاتية', home_contact_btn: 'اتصل بي', about_title: 'عني', about_me_title: 'ملفي الشخصي', about_me_text: 'أنا ني آرو، طالب ديناميكي ومتعدد الاستخدامات في التسويق والإدارة. أسعى باستمرار إلى المعرفة الجديدة وشغوف بوضع استراتيجيات مبتكرة. هدفي هو اكتساب الخبرة في بيئة عمل محفزة.', about_academic_title: 'مسيرتي الأكاديمية', about_academic_text: 'أقوم حالياً بالتحضير لدرجة البكالوريوس في التسويق والأعمال (2022-2025) في جامعة ESSCA، وأخطط لمواصلة دراستي للحصول على ماجستير في إدارة الأعمال (MBA) (2025-2027) في جامعة UTM موريشيوس. لدي أساس متين في الإدارة والتسويق.', about_pro_title: 'خبرتي المهنية', about_pro_text: 'اكتسبت خبرة عملية من خلال التدريب في التسويق الرقمي (AGRIVAL)، ومراقبة الجودة (AGRIFARM)، وإدارة المخزون (SMTP). مكنتني هذه التجارب من تطوير مهارات أساسية في الإبداع، والتحليل النقدي، والعمل الجماعي، والتنظيم.', about_hobbies_title: 'اهتماماتي', about_hobbies_text: 'خارج دراستي، أنا شغوف بالشبكات الاجتماعية، والرسم، والتأمل. تساعدني هذه الأنشطة على تطوير إبداعي والحفاظ على التوازن الضروري للنجاح المهني.', services_title: 'خدماتي', services_text: 'إليك مجالات خبرتي الرئيسية. انقر على بطاقة للاطلاع على أمثلة للمشاريع المنجزة.', service_video_title: 'إنتاج الفيديو', service_video_text: 'إنشاء محتوى فيديو جذاب لوسائل التواصل الاجتماعي أو الإعلانات أو العروض التقديمية للشركات. التحرير وما بعد الإنتاج والتحسين لمختلف المنصات.', service_image_title: 'تصميم الصور', service_image_text: 'إنشاء رسومات (منشورات، قصص، لافتات)، تنقيح صور احترافي، وتصميم دعامات بصرية لتعزيز هوية علامتك التجارية.', contact_title: 'ابق على تواصل', contact_encouragement: 'هل لديك مشروع أو فرصة أو مجرد سؤال؟ أرسل لي رسالة! أنا دائماً منفتح على التعاون الجديد وحريص على التعلم.', contact_name_placeholder: 'الاسم', contact_firstname_placeholder: 'الاسم الأول', contact_email_placeholder: 'البريد الإلكتروني', contact_age_placeholder: 'سبب الاتصال', contact_message_placeholder: 'رسالتك أو اقتراحك...', contact_send_btn: 'إرسال', footer_rights: 'جميع الحقوق محفوظة.', modal_video_title: 'معرض الفيديو', modal_image_title: 'معرض الصور/التصميم', video_caption_1: 'مشروع مونتاج تجاري (لعبة فيديو)', video_caption_2: 'عرض لمهارات ما بعد الإنتاج', video_caption_3: 'فيلم قصير أو إعلان اجتماعي', video_caption_4: 'مشروع مونتاج تجاري (لعبة فيديو)', video_caption_5: 'مشروع مونتاج تجاري (لعبة فيديو)', video_caption_6: 'مشروع مونتاج تجاري (لعبة فيديو)', video_caption_7: 'مشروع مونتاج تجاري (لعبة فيديو)', image_caption_1: 'تصميم جرافيكي لوسائل التواصل الاجتماعي', image_caption_2: 'تصوير وتنقيح الأحداث', image_caption_3: 'تصميم الشعار والهوية البصرية', image_caption_4: 'تصوير المنتجات (التجارة الإلكترونية)', reason_academic: 'أكاديمي', reason_professional: 'مهني', reason_other: 'أخرى', video_src_1: 'video/08 mars 2025.mp4', video_src_2: 'video/Animation Panneau simu by Ny Aro test.mp4', video_src_3: 'video/ASMR lait cere.mp4', video_src_4: 'video/bonne année 2025 agrival.mp4', video_src_5: 'video/Demos Nutrilait by Ny Aro test.mp4', video_src_6: 'video/happy new year nutrifood.mp4', video_src_7: 'video/Tuto Nutrilait.mp4', },
+            de: { 
+                page_title: 'Ny Aro-Portfolio', home_link: 'Startseite', about_link: 'Über mich', services_link: 'Leistungen', contact_link: 'Kontakt', lang_select_title: 'Sprache wählen', lang_mg: 'Madagassisch', lang_fr: 'Französisch', lang_en: 'Englisch', lang_zh: 'Chinesisch', lang_ar: 'Arabisch', lang_de: 'Deutsch', lang_mrc: 'Mauritisches Kreol', home_greeting: 'Hallo!', home_subtitle: 'MARKETING & FINANCIAL OFFICER', home_bio: 'Ich bin Ny Aro und suche eine Junior-Position, um meine Fähigkeiten weiterzuentwickeln. Ein dynamischer, neugieriger und vielseitiger Student. Sehr motiviert, in einem professionellen Umfeld zu lernen und zu wachsen.', home_cv_btn: 'Lebenslauf herunterladen', home_contact_btn: 'Kontaktieren Sie mich', about_title: 'Über mich', about_me_title: 'Mein Profil', about_me_text: 'Ich bin Ny Aro, ein dynamischer und vielseitiger Student in Marketing & Management. Ich bin ständig auf der Suche nach neuem Wissen und leidenschaftlich daran interessiert, innovative Strategien zu entwickeln. Mein Ziel ist es, Erfahrungen in einem anregenden professionellen Umfeld zu sammeln.', about_academic_title: 'Mein akademischer Werdegang', about_academic_text: 'Ich bereite mich derzeit auf einen Bachelor in Marketing und Business (2022-2025) an der ESSCA University vor und plane, mein Studium mit einem Master of Business Administration (MBA) (2025-2027) an der UTM Mauritius fortzusetzen. Ich verfüge über eine solide Grundlage in Management und Marketing.', about_pro_title: 'Meine Berufserfahrung', about_pro_text: 'Ich habe praktische Erfahrungen durch Praktika in den Bereichen Digital Marketing (AGRIVAL), Qualitätskontrolle (AGRIFARM) und Bestandsmanagement (SMTP) gesammelt. Diese Erfahrungen haben es mir ermöglicht, Schlüsselqualifikationen in Kreativität, kritischer Analyse, Teamarbeit und Organisation zu entwickeln.', about_hobbies_title: 'Meine Interessen', about_hobbies_text: 'Außerhalb meines Studiums bin ich leidenschaftlich an sozialen Netzwerken, Zeichnen und Meditation interessiert. Diese Aktivitäten helfen mir, meine Kreativität zu entwickeln und die für den beruflichen Erfolg notwendige Balance zu halten.', services_title: 'Meine Leistungen', services_text: 'Hier sind meine Hauptfachgebiete. Klicken Sie auf eine Karte, um Beispiele für abgeschlossene Projekte zu sehen.', service_video_title: 'Videoproduktion', service_video_text: 'Erstellung von ansprechendem Video-Content für soziale Medien, Werbung oder Unternehmenspräsentationen. Schnitt, Postproduktion und Optimierung für verschiedene Plattformen.', service_image_title: 'Bild-Design', service_image_text: 'Grafische Gestaltung (Posts, Stories, Banner), professionelle Bildbearbeitung und Design visueller Träger zur Stärkung Ihrer Markenidentität.', contact_title: 'Bleiben wir in Kontakt', contact_encouragement: 'Haben Sie ein Projekt, eine Gelegenheit oder nur eine Frage? Senden Sie mir eine Nachricht! Ich bin immer offen für neue Zusammenarbeiten und lerne gerne dazu.', contact_name_placeholder: 'Name', contact_firstname_placeholder: 'Vorname', contact_email_placeholder: 'E-Mail', contact_age_placeholder: 'Grund des Kontakts', contact_message_placeholder: 'Ihre Nachricht oder Ihr Vorschlag...', contact_send_btn: 'Senden', footer_rights: 'Alle Rechte vorbehalten.', modal_video_title: 'Video-Galerie', modal_image_title: 'Foto-/Design-Galerie', video_caption_1: 'Kommerzielles Schnittprojekt (Videospiel)', video_caption_2: 'Demonstration von Postproduktionsfähigkeiten', video_caption_3: 'Kurzfilm oder soziale Anzeige', video_caption_4: 'Kommerzielles Schnittprojekt (Videospiel)', video_caption_5: 'Kommerzielles Schnittprojekt (Videospiel)', video_caption_6: 'Kommerzielles Schnittprojekt (Videospiel)', video_caption_7: 'Kommerzielles Schnittprojekt (Videospiel)', image_caption_1: 'Grafikdesign für soziale Medien', image_caption_2: 'Eventfotografie und Retusche', image_caption_3: 'Logo-Design und visuelle Identität', image_caption_4: 'Produktfotografie (E-Commerce)', reason_academic: 'Akademisch', reason_professional: 'Beruflich', reason_other: 'Andere', video_src_1: 'video/08 mars 2025.mp4', video_src_2: 'video/Animation Panneau simu by Ny Aro test.mp4', video_src_3: 'video/ASMR lait cere.mp4', video_src_4: 'video/bonne année 2025 agrival.mp4', video_src_5: 'video/Demos Nutrilait by Ny Aro test.mp4', video_src_6: 'video/happy new year nutrifood.mp4', video_src_7: 'video/Tuto Nutrilait.mp4', },
+            mrc: { 
+                page_title: 'Portfolio Ny Aro', home_link: 'Lakaz', about_link: 'Lor Mwa', services_link: 'Servis', contact_link: 'Kontak', lang_select_title: 'Swazir langaz', lang_mg: 'Malgach', lang_fr: 'Franse', lang_en: 'Angle', lang_zh: 'Sinuwa', lang_ar: 'Arab', lang_de: 'Aleman', lang_mrc: 'Kréol Morisien', home_greeting: 'Bonsour!', home_subtitle: 'MARKETING & FINANCIAL OFFICER', home_bio: 'Mo Ny Aro, ek mo pé rod enn pozision junior pou dévelop mo bann skill. Élev dinamik, kurié ek polivalan. Trè motivé pou aprann ek grandi dan enn lanvironnman profésionel.', home_cv_btn: 'Télécharge CV', home_contact_btn: 'Kontak mwa', about_title: 'Lor Mwa', about_me_title: 'Mo Profil', about_me_text: 'Mo Ny Aro, enn élèv dinamik ek polivalan dan Marketing & Management. Mo kontinié rod nuvo konesans ek pasioné pou kréasion bann stratézi inovatif. Mo lobzektif se gayn lexpérians dan enn lanvironnman profésionel stimulé.', about_academic_title: 'Mo Parcours Akadémik', about_academic_text: 'Mo pé prépare enn Bachelor en Marketing et Business (2022-2025) dan ESSCA University, ek mo planifié kontinué mo létid avèk enn Master of Business Administration (MBA) (2025-2027) dan UTM Mauritius. Mo ena enn baz solid dan zestion ek marketing.', about_pro_title: 'Mo Lexpérians Profésionel', about_pro_text: 'Mo finn gainn lexpérians pratik gras a bann stage dan Digital Marketing (AGRIVAL), Kontrol Kalité (AGRIFARM), ek Zestion Stok (SMTP). Sa bann lexpérians la finn pèrmett mwa dévelop bann skill clé dan kréativité, analiz kritik, travay an ekip ek organizasyon.', about_hobbies_title: 'Mo Intéré', about_hobbies_text: 'Andéor mo létid, mo passioné par rézo sosiô, déssin, ek méditasyon. Sa bann aktivité la éd mwa dévelop mo kréativité ek gard lékilib esansiel pou réisit profésionel.', services_title: 'Mo Bann Servis', services_text: 'Ala mo bann domèn lexpertiz prinsipal. Klik lor enn kart pou get bann légzanp prozé ki mo finn fer.', service_video_title: 'Prodiksyon Vidéo', service_video_text: 'Kréasyon konteni vidéo ki angaz pou rézo sosiô, piblisité ou prezantasyon konpayni. Montaz, post-prodiksyon ek optimizasyon pou plizièr platform.', service_image_title: 'Konsepsyon Imaz', service_image_text: 'Kréasyon grafik (post, stories, banner), rétous foto profésionel ek konsepsyon sipor viziel pou ranforsi ou lidantité mark.', contact_title: 'Annou Gard Kontak', contact_encouragement: 'Ou ena enn prozé, enn loportinité ou zis enn kestion? Avoy mwa enn mesaj! Mo touzour ouvert pou nuvo kolaborasion ek anvi aprann.', contact_name_placeholder: 'Nom', contact_firstname_placeholder: 'Prénom', contact_email_placeholder: 'Email', contact_age_placeholder: 'Raison kontak', contact_message_placeholder: 'To mesaj ou to propozision...', contact_send_btn: 'Avoy', footer_rights: 'Tou drwa rezervé.', modal_video_title: 'Galeri Vidéo', modal_image_title: 'Galeri Foto/Design', video_caption_1: 'Prozé Montaz Komersial (Zeu Vidéo)', video_caption_2: 'Demonstrasion Skill Post-Prodiksyon', video_caption_3: 'Kourt-Metraz ou Publisité Sosyal', video_caption_4: 'Prozé Montaz Komersial (Zeu Vidéo)', video_caption_5: 'Prozé Montaz Komersial (Zeu Vidéo)', video_caption_6: 'Prozé Montaz Komersial (Zeu Vidéo)', video_caption_7: 'Prozé Montaz Komersial (Zeu Vidéo)', image_caption_1: 'Konsepsyon Grafik pou Rézo Sosiô', image_caption_2: 'Fotografi Événman ek Rétous', image_caption_3: 'Design Logo ek Idantité Vizuel', image_caption_4: 'Fotografi Prodwi (E-commerce)', reason_academic: 'Akademik', reason_professional: 'Profesionel', reason_other: 'Lòt', video_src_1: 'video/08 mars 2025.mp4', video_src_2: 'video/Animation Panneau simu by Ny Aro test.mp4', video_src_3: 'video/ASMR lait cere.mp4', video_src_4: 'video/bonne année 2025 agrival.mp4', video_src_5: 'video/Demos Nutrilait by Ny Aro test.mp4', video_src_6: 'video/happy new year nutrifood.mp4', video_src_7: 'video/Tuto Nutrilait.mp4', },
+        };
+        
+        // --- Variables Globales ---
+        const wrapper = document.querySelector('.wrapper');
+        const sections = ['home', 'about', 'services', 'contact'];
+        let currentSectionIndex = 0;
+        const navLinks = document.querySelectorAll('nav ul li a');
+        const languageMenu = document.getElementById('language-menu');
+        const backgroundImg = document.getElementById('background-img');
+        const contactImage = document.querySelector('.contact-image-container img');
+        
+        // --- Le seuil pour le défilement vertical (doit correspondre au CSS) ---
+        const mobileBreakpoint = 768; 
 
-    <!-- main-->
-<div class="main">
-  <div class="bienvenu">
-    <h2>BIENVENUE</h2>
-    <p>dqlsjdkqsjdkqsfjshdjkfsdjfjsdfgsdfhsgdfhgsdjhfgsjhdgfjsdhgfjsgdjhfs <br> dfsdhfkjsdhfjkshdfjkhsdjkfhsjkdfhksdhfksdf
-    <br>sqndbsbqdn,bqsn,dbsqn,dbqn,sbdn,qsvbdqvsbndvqsbdqvsbndvqbsdvbqnsvdbnqsv</p>
-    <button id="con1">Explorer</button>
-  </div>
-<img src="img/pdp111.png" height="550px" width="350px" alt="">
-</div>
-<!--  footer  -->
-<div class="footer">
+        // --- Fonctions de Modales (Reste inchangé) ---
+        function openModal(type) {
+            const modal = document.getElementById(type + '-modal');
+            if (modal) {
+                modal.style.display = "block";
+                document.body.style.overflow = "hidden"; // Empêche le défilement de l'arrière-plan
+            }
+        }
+        
+        function closeModal(type) {
+            const modal = document.getElementById(type + '-modal');
+            if (modal) {
+                modal.style.display = "none";
+                document.body.style.overflow = "auto"; // Restaure le défilement
+            }
+        }
 
-<div class="alr2">
-  <span> &nbsp;</span>
-  </div>
+        // --- NOUVELLES FONCTIONS LIGHTBOX POUR IMAGES (Reste inchangé) ---
+        const lightboxModal = document.getElementById('lightbox-modal');
+        const lightboxImage = document.getElementById('lightbox-image');
+        window.openImageLightbox = function(imageSrc) {
+            lightboxImage.src = imageSrc;
+            lightboxModal.style.display = "block";
+            closeModal('image'); // Ferme la modale principale
+        }
+        window.closeLightbox = function() {
+            lightboxModal.style.display = "none";
+            // Optionnel : Rouvrir la modale principale de la galerie après la fermeture
+             openModal('image'); 
+        } 
 
-<div class="btmm">
+        // --- NOUVELLES FONCTIONS LIGHTBOX POUR VIDÉOS (Reste inchangé) ---
+        const videoLightboxModal = document.getElementById('video-lightbox-modal');
+        const lightboxVideo = document.getElementById('lightbox-video');
+        window.openVideoLightbox = function(videoKey) {
+            const lang = document.documentElement.lang || 'fr';
+            const videoSrc = translations[lang] ? translations[lang][videoKey] : '';
+            if (videoSrc) {
+                lightboxVideo.src = videoSrc;
+                videoLightboxModal.style.display = "block";
+                lightboxVideo.play();
+                closeModal('video'); // Ferme la modale principale de la galerie
+            }
+        }
+        window.closeVideoLightbox = function() {
+            videoLightboxModal.style.display = "none";
+            lightboxVideo.pause();
+            lightboxVideo.currentTime = 0; // Rembobiner
+            // Optionnel : Rouvrir la modale principale de la galerie après la fermeture
+            openModal('video');
+        } 
+        
+        // --- Gestion du défilement (MODIFIÉ POUR MOBILE) ---
+        function navigateSection(index) {
+            const isMobile = window.innerWidth <= mobileBreakpoint;
+            const targetSectionId = sections[index];
+            const targetElement = document.getElementById(targetSectionId);
 
-  <div class="f2">
-    <!-- FB, insta twitter footer --> 
-    <div class="card">
-        <b></b>
-        <div class="content">
-            <img src="img/pdp.jpg" id="pdp">
-            <div class="zal">
-          <p class="title">OLINJANAHARY NY ARO<br><span>Commercial & Marketeur</span></p>
-          <ul class="sci">
-            <li id="fit">
-              <a href="https://www.facebook.com/nyaro.olinjanahary/">
-                <svg class="fa-brands fa-facebook" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path></svg>
-              </a>
-            </li>
-      
-            <li id="fit">
-              <a href="https://mail.google.com/nnyyaarroo@gmail.com">
-                <svg class="fa-brands fa-twitter" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>
-              </a>
-            </li>
-      
-            <li id="fit">
-              <a href="#">
-                <svg class="fa-brands fa-linkedin-in" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path></svg>
-              </a>
-            </li>
-      
-            <li id="fit">
-              <a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.instagram.com%2Fny.aro_%3Figsh%3DMW01dWkwbDBoM2ppNw%253D%253D%26fbclid%3DIwZXh0bgNhZW0CMTAAAR2bYxWWxNtqvCOmfLfNJiOFO-zpGk2z-ycshmha8OSGY4r_pLejqBc5rjI_aem_whJLKiHZ1DAEhUBlEDEC5g&h=AT0eH8ZMlwYm5IR22MP7jOP5aKdRiFcQc5HBdo32_6SiZW4H_EUR9z8_yEDEweMthFXKuAW3YYrelO-OjAw8Z-NPCllqln-oDwX6-V77fKKPREfdpWSC1g6fwfGYpB1K-VsC4Q">
-                <svg class="fa-brands fa-instagram" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></svg>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>  
-    </div>
-    </div>
+            // GESTION DU DÉFILEMENT VERTICAL SUR MOBILE/PETITE TABLETTE
+            if (isMobile) {
+                if (targetElement) {
+                    // Utiliser scrollIntoView pour un défilement smooth vertical standard
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                    currentSectionIndex = index;
+                    updateNavActiveState(index);
+                    updateBackgroundImage(targetSectionId); 
+                }
+                return; // Arrêter ici pour le mobile
+            }
 
+            // GESTION DU DÉFILEMENT HORIZONTAL (Desktop/Grande Tablette)
+            // S'assurer de ne pas dépasser les limites
+            if (index < 0) {
+                index = sections.length - 1; // Revenir à la fin si on va trop à gauche
+            } else if (index >= sections.length) {
+                index = 0; // Revenir au début si on va trop à droite
+            }
 
-<div class="btm1">
+            currentSectionIndex = index;
+            const offset = index * -25;
+            wrapper.style.transform = `translateX(${offset}%)`;
 
-<H2>Contact rapide?</H2>
-<div class="ppp">
-<p><<< toucher sur ce cadre magique</p>
-<br>
-<p>sinon partagez vos idées ici >>></p>
-</div>
-</div>
+            updateNavActiveState(index);
+            updateBackgroundImage(targetSectionId); // Mettre à jour l'image de fond
+        }
 
+        // --- Autres Fonctions (Reste inchangé) ---
+        function updateNavActiveState(index) {
+            navLinks.forEach((link, i) => {
+                link.classList.remove('active');
+                if (i === index) {
+                    link.classList.add('active');
+                    window.location.hash = '#' + sections[index]; // Met à jour le hash pour le rafraîchissement
+                }
+            });
+        }
+        
+        // La fonction updateBackgroundImage (Reste inchangé)
+        function updateBackgroundImage(sectionId) {
+            let newSrc = './img/i6.png'; // Default
+            let newContactSrc = 'img/i7.png'; // Default for contact
 
-<div class="btm2">
-  <h2>Restons en contact!</h2>
-<!-- Mail --> 
-<div class="input-wrapper">
-  <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <g data-name="Layer 2">
-      <g data-name="inbox">
-        <rect
-          width="24"
-          height="24"
-          transform="rotate(180 12 12)"
-          opacity="0"
-        ></rect>
-        <path
-          d="M20.79 11.34l-3.34-6.68A3 3 0 0 0 14.76 3H9.24a3 3 0 0 0-2.69 1.66l-3.34 6.68a2 2 0 0 0-.21.9V18a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3v-5.76a2 2 0 0 0-.21-.9zM8.34 5.55a1 1 0 0 1 .9-.55h5.52a1 1 0 0 1 .9.55L18.38 11H16a1 1 0 0 0-1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-2a1 1 0 0 0-1-1H5.62z"
-        ></path>
-      </g>
-    </g>
-  </svg>
-  <input type="text" name="text" class="input" id="lavalava" placeholder="Vos idées..." />
-  <button class="Subscribe-btn">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="30"
-      height="10"
-      viewBox="0 0 38 15"
-      class="arrow"
-    >
-      <path
-        d="M10 7.519l-.939-.344h0l.939.344zm14.386-1.205l-.981-.192.981.192zm1.276 5.509l.537.843.148-.094.107-.139-.792-.611zm4.819-4.304l-.385-.923h0l.385.923zm7.227.707a1 1 0 0 0 0-1.414L31.343.448a1 1 0 0 0-1.414 0 1 1 0 0 0 0 1.414l5.657 5.657-5.657 5.657a1 1 0 0 0 1.414 1.414l6.364-6.364zM1 7.519l.554.833.029-.019.094-.061.361-.23 1.277-.77c1.054-.609 2.397-1.32 3.629-1.787.617-.234 1.17-.392 1.623-.455.477-.066.707-.008.788.034.025.013.031.021.039.034a.56.56 0 0 1 .058.235c.029.327-.047.906-.39 1.842l1.878.689c.383-1.044.571-1.949.505-2.705-.072-.815-.45-1.493-1.16-1.865-.627-.329-1.358-.332-1.993-.244-.659.092-1.367.305-2.056.566-1.381.523-2.833 1.297-3.921 1.925l-1.341.808-.385.245-.104.068-.028.018c-.011.007-.011.007.543.84zm8.061-.344c-.198.54-.328 1.038-.36 1.484-.032.441.024.94.325 1.364.319.45.786.64 1.21.697.403.054.824-.001 1.21-.09.775-.179 1.694-.566 2.633-1.014l3.023-1.554c2.115-1.122 4.107-2.168 5.476-2.524.329-.086.573-.117.742-.115s.195.038.161.014c-.15-.105.085-.139-.076.685l1.963.384c.192-.98.152-2.083-.74-2.707-.405-.283-.868-.37-1.28-.376s-.849.069-1.274.179c-1.65.43-3.888 1.621-5.909 2.693l-2.948 1.517c-.92.439-1.673.743-2.221.87-.276.064-.429.065-.492.057-.043-.006.066.003.155.127.07.099.024.131.038-.063.014-.187.078-.49.243-.94l-1.878-.689zm14.343-1.053c-.361 1.844-.474 3.185-.413 4.161.059.95.294 1.72.811 2.215.567.544 1.242.546 1.664.459a2.34 2.34 0 0 0 .502-.167l.15-.076.049-.028.018-.011c.013-.008.013-.008-.524-.852l-.536-.844.019-.012c-.038.018-.064.027-.084.032-.037.008.053-.013.125.056.021.02-.151-.135-.198-.895-.046-.734.034-1.887.38-3.652l-1.963-.384zm2.257 5.701l.791.611.024-.031.08-.101.311-.377 1.093-1.213c.922-.954 2.005-1.894 2.904-2.27l-.771-1.846c-1.31.547-2.637 1.758-3.572 2.725l-1.184 1.314-.341.414-.093.117-.025.032c-.01.013-.01.013.781.624zm5.204-3.381c.989-.413 1.791-.42 2.697-.307.871.108 2.083.385 3.437.385v-2c-1.197 0-2.041-.226-3.19-.369-1.114-.139-2.297-.146-3.715.447l.771 1.846z"
-      ></path></svg>Envoyer
-  </button>
-</div>
+            // Animation de fade-out rapide
+            backgroundImg.style.opacity = 0; 
 
-<div class="kozii">Toutes nos remerciements à vous d'avoir visiter notre site web. <br> Vous pouvez interagir avec nous avec le message ci dessus! <br> Bien à vous!</div>
-</div>
-</div>
+            setTimeout(() => {
+                if (sectionId === 'about') {
+                    newSrc = 'img/i2.jpg';
+                    newContactSrc = 'img/i7.png';
+                } else if (sectionId === 'services') {
+                    newSrc = 'img/i3.jpg';
+                    newContactSrc = 'img/i7.png';
+                } else if (sectionId === 'contact') {
+                    newSrc = 'img/i5.jpg';
+                    newContactSrc = 'img/i6.png'; // L'image contact devient l'image home
+                } else { // home
+                    newSrc = 'img/i6.png';
+                    newContactSrc = 'img/i7.png';
+                }
+                // Changer la source et réappliquer l'opacité
+                backgroundImg.src = newSrc;
+                backgroundImg.style.opacity = 0.7; // Remettre l'opacité
+                // Gérer l'image à droite dans la section Contact
+                if (contactImage) {
+                    contactImage.src = newContactSrc;
+                }
+            }, 50); // Petit délai pour laisser la transition opérer
+        }
 
-<div class="alr">
-<span> &copy; All rights reserved by Ny Aro.</span>
-</div>
-</div>
+        // --- Fonctions de Traduction (Reste inchangé) ---
+        function updateText(lang) {
+            document.documentElement.lang = lang; // Met à jour l'attribut lang du HTML
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+            // Gérer les placeholders
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (translations[lang] && translations[lang][key]) {
+                    el.placeholder = translations[lang][key];
+                }
+            });
+            // Gérer les sources de vidéos
+            document.querySelectorAll('[data-i18n-video-src]').forEach(el => {
+                 const key = el.getAttribute('data-i18n-video-src');
+                 if (translations[lang] && translations[lang][key]) {
+                     el.src = translations[lang][key];
+                 }
+            });
+            // Gérer l'option sélectionnée dans le menu déroulant Raison du contact
+            const contactReasonSelect = document.querySelector('select[name="Raison"]');
+            if (contactReasonSelect) {
+                 const defaultOption = contactReasonSelect.querySelector('option[disabled][selected]');
+                 const defaultKey = defaultOption.getAttribute('data-i18n');
+                 if (translations[lang] && translations[lang][defaultKey]) {
+                     defaultOption.textContent = translations[lang][defaultKey];
+                 }
+            }
+        }
+        
+        // La fonction buildLanguageList (Reste inchangé)
+        function buildLanguageList(currentLang) {
+            const langList = document.getElementById('language-list');
+            langList.innerHTML = ''; 
+
+            const availableLangs = ['fr', 'en', 'de', 'mg', 'mrc', 'zh', 'ar']; 
+            
+            // Map des drapeaux (à adapter si vous utilisez des fichiers image)
+            const flagMap = {
+                fr: '🇫🇷 Français', en: '🇬🇧 Anglais', de: '🇩🇪 Allemand', mg: '🇲🇬 Malgache', mrc: '🇲🇺 Kréol Morisien', zh: '🇨🇳 Chinois', ar: '🇦🇪 Arabe'
+            };
+
+            availableLangs.forEach(langCode => {
+                const langNameKey = 'lang_' + langCode;
+                const langDisplayName = flagMap[langCode] || langCode.toUpperCase(); // Utilise le nom avec drapeau
+
+                const listItem = document.createElement('li');
+                const link = document.createElement('a');
+                link.href = "#";
+                link.textContent = langDisplayName;
+                link.setAttribute('data-lang', langCode);
+                link.style.fontWeight = langCode === currentLang ? 'bold' : 'normal';
+
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    updateText(langCode);
+                    buildLanguageList(langCode); // Reconstruit pour mettre à jour le gras
+                    toggleMenu(); // Ferme le menu
+                    // Si l'utilisateur est sur mobile, naviguer au hash pour fixer le scroll
+                    if (window.innerWidth <= mobileBreakpoint) {
+                       const currentHash = window.location.hash.substring(1);
+                       const currentElement = document.getElementById(currentHash) || document.getElementById('home');
+                       currentElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+
+                listItem.appendChild(link);
+                langList.appendChild(listItem);
+            });
+        }
+
+        // --- Événements et Initialisation ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+
+            // Navigation par les flèches (uniquement actif sur Desktop/Tablet)
+            if (prevBtn && nextBtn) {
+                prevBtn.addEventListener('click', () => navigateSection(currentSectionIndex - 1));
+                nextBtn.addEventListener('click', () => navigateSection(currentSectionIndex + 1));
+            }
+
+            // Navigation par les liens du menu
+            navLinks.forEach((link, index) => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault(); 
+                    navigateSection(index);
+                });
+            });
+
+            // --- Menu Hamburger / Langues ---
+            window.toggleMenu = function() {
+                languageMenu.classList.toggle('active');
+            };
+
+            // --- Initialisation ---
+            
+            // 1. Mise à jour de l'année du copyright
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // 2. Définir la langue initiale (fr est par défaut dans le HTML)
+            const initialLang = document.documentElement.lang || 'fr';
+            updateText(initialLang); 
+            buildLanguageList(initialLang); // Construit la liste des langues
+
+            // 3. Initialiser la page en fonction du hash de l'URL ou par défaut à Home
+            const initialHash = window.location.hash.substring(1);
+            const initialIndex = sections.indexOf(initialHash);
+            navigateSection(initialIndex > -1 ? initialIndex : 0);
+        });
+    </script>
 </body>
 </html>
